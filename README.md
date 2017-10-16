@@ -13,6 +13,8 @@
 			- [Output](#output)
 			- [Result](#result)
 	- [Time-Domain Analysis of Second-Order Control System](#time-domain-analysis-of-second-order-control-system)
+		- [Output](#output)
+		- [Result](#result)
 - [Copyright](#copyright)
 
 <!-- /TOC -->
@@ -77,7 +79,7 @@ pp =
 
 图像输出:
 
-![Chapter5](http://o8rcvuq9a.bkt.clouddn.com/Chapter5.png)
+![Chapter5E1](http://o8rcvuq9a.bkt.clouddn.com/Chapter5.png)
 
 #### Result
 
@@ -86,7 +88,7 @@ pp =
 |闭环传递函数 | $\frac{2}{0.625 s^2 + s + 2}$ | $\frac{5}{0.625 s^2 + s + 5}$ | $\frac{15}{0.625 s^2 + s + 15}$ |
 |阻尼比 $z$ | $\frac{1292}{2889}$ | $\frac{394}{1393}$ | $\frac{784}{4801}$ |
 |自然频率 $\omega_n (rad/s)$ | $\frac{2889}{1615}$ | $\frac{3363}{1189}$ | $\frac{4801}{980}$ |
-|闭环极点 $P$ |$-\frac{4}{5} \pm \frac{8}{5}i$ | $-\frac{4}{5} \pm \frac{860}{317}i$ | $-\frac{4}{5} \pm \frac{7013}{1451}i$ | 
+|闭环极点 $P$ |$-\frac{4}{5} \pm \frac{8}{5}i$ | $-\frac{4}{5} \pm \frac{860}{317}i$ | $-\frac{4}{5} \pm \frac{7013}{1451}i$ |
 
 ### Task 2
 
@@ -94,13 +96,127 @@ pp =
 
 #### Output
 
+命令行输出：
+
+```raw
+gg =
+ 
+  From input 1 to output:
+         10
+  ----------------
+  0.2 s^2 + s + 10
+ 
+  From input 2 to output:
+         10
+  ----------------
+  0.5 s^2 + s + 10
+ 
+  From input 3 to output:
+       10
+  ------------
+  s^2 + s + 10
+ 
+Continuous-time transfer function.
+
+
+wwn =
+
+    1393/197       2889/646        721/228   
+    1393/197       2889/646        721/228   
+
+
+zz =
+
+    1189/3363       646/2889       114/721   
+    1189/3363       646/2889       114/721   
+
+
+pp =
+
+      -5/2      + 1012/153i        -1        + 1421/326i        -1/2      + 1249/400i  
+      -5/2      - 1012/153i        -1        - 1421/326i        -1/2      - 1249/400i
+```
+
+图像输出：
+
+![Chapter5E2](http://o8rcvuq9a.bkt.clouddn.com/Chapter5E2.png)
+
 #### Result
+
+| $K=10$ | $T=0.2s$ | $T=0.5s$ | $T=1s$ |
+|:----: |:----: |:----: | :----: |
+|闭环传递函数 | $\frac{10}{0.2 s^2 + s + 10}$ | $\frac{10}{0.5 s^2 + s + 10}$ | $\frac{10}{ s^2 + s + 10}$ |
+|超调量 (%) | $30.5$ | $48.5$ | $60.5$ |
+|峰值时间 (s) | $0.479$ | $0.737$ | $1.01$ |
+|调节时间 (s) |$1.11$ | $2.99$ | $5.33$ |
+
+> 调节时间: 响应达到并保持在稳态值的 $\pm 5\%$ 误差带 $\triangle$ 内所需要的最短时间。
 
 ## Time-Domain Analysis of Second-Order Control System
 
 二阶系统时域分析
 
 [MATLAB Script](/Chapter51.m)
+
+### Output
+
+命令行输出：
+```raw
+gg =
+ 
+  From input 1 to output:
+          10
+  ------------------
+  0.625 s^2 + s + 10
+ 
+  From input 2 to output:
+        2 s + 10
+  --------------------
+  0.625 s^2 + 3 s + 10
+ 
+  From input 3 to output:
+           10
+  --------------------
+  0.625 s^2 + 3 s + 10
+ 
+  From input 4 to output:
+        2 s + 10
+  --------------------
+  0.625 s^2 + 5 s + 10
+ 
+Continuous-time transfer function.
+
+
+wwn =
+
+       4              4              4              4       
+       4              4              4              4       
+
+
+zz =
+
+       1/5            3/5            3/5            1       
+       1/5            3/5            3/5            1       
+
+
+pp =
+
+      -4/5      + 4801/1225i      -12/5      +   16/5i         -12/5      +   16/5i          -4        +    0i      
+      -4/5      - 4801/1225i      -12/5      -   16/5i         -12/5      -   16/5i          -4        +    0i  
+```
+
+图像输出：
+
+![Chapter5E3](http://o8rcvuq9a.bkt.clouddn.com/Chapter5E3.png)
+
+### Result
+
+| 参数 | $T_d = K_i = 0$ | $T_d = 0.2, K_i = 0$ | $T_d = 0, K_i = 0.2$ | $T_d = K_i = 0.2$ |
+|:----: |:----: |:----: | :----: | :----: |
+|闭环传递函数 | $\frac{10}{0.625 s^2 + s + 10}$ | $\frac{2s+10}{0.625 s^2 + 3s + 10}$ | $\frac{10}{0.625 s^2 + 3s + 10}$ | $\frac{2s+10}{0.625 s^2 + 5s + 10}$ |
+|阻尼比 $z$ | $\frac{1}{5}$ | $\frac{3}{5}$ | $\frac{3}{5}$ | $1$ |
+|自然频率 $\omega_n (rad/s)$ | $4$ | $4$ | $4$ | $4$ |
+
 
 # Copyright
 
